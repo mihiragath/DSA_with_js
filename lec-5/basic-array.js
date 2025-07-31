@@ -14,18 +14,26 @@ for (let i = 0; i < n; i++) {
 }
 process.stdout.write("Sum of elements: " + sum + "\n");
 
-//max  element
+//max,min element
 let max = arr[0];
+let min = arr[0];
 for (let i = 1; i < n; i++) {
   if (arr[i] > max) {
     max = arr[i];
   }
+  if (arr[i] < min) {
+    min = arr[i];
+  }
 }
-process.stdout.write("Max element: " + max + "\n");
+process.stdout.write(
+  "Max element: " + max + "\n" + "Min element: " + min + "\n"
+);
 
 //second max element
 let firMax = Math.max(arr[0], arr[1]);
 let secMax = Math.min(arr[0], arr[1]);
+let firMin = Math.min(arr[0], arr[1]);
+let secMin = Math.max(arr[0], arr[1]);
 for (let i = 1; i < n; i++) {
   if (arr[i] > firMax) {
     secMax = firMax;
@@ -33,8 +41,21 @@ for (let i = 1; i < n; i++) {
   } else if (arr[i] > secMax && arr[i] < firMax) {
     secMax = arr[i];
   }
+  if (arr[i] < firMin) {
+    secMin = firMin;
+    firMin = arr[i];
+  } else if (arr[i] < secMin && arr[i] > firMin) {
+    secMin = arr[i];
+  }
 }
-process.stdout.write("Second Max element: " + secMax + "\n");
+process.stdout.write(
+  "Second Max element: " +
+    secMax +
+    "\n" +
+    "Second Min element: " +
+    secMin +
+    "\n"
+);
 
 //reverse the array
 for (let i = 0; i < Math.floor(n / 2); i++) {
