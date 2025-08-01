@@ -91,3 +91,19 @@ while (p < arr2.length) {
   p++;
 }
 process.stdout.write("moved array is: " + arr2.join(" ") + "\n");
+
+//left rotate array by 1
+let copyL = arr[0];
+for (let i = 0; i < n - 1; i++) {
+  arr[i] = arr[i + 1];
+}
+arr[n - 1] = copyL;
+console.log("Array after left rotation by 1: " + arr);
+
+//right rotate array by 1
+let copyR = arr[n - 1];
+for (let i = n - 1; i > 0; i--) {
+  arr[i] = arr[i - 1];
+}
+arr[0] = copyR;
+console.log("Array after right rotation by 1: " + arr);
