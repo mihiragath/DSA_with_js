@@ -77,3 +77,27 @@ let numsMajority = [3, 2, 3];
 console.log("Majority element:", majorityElement(numsMajority));
 
 //leetcode question 42 trapping rainwater
+function trap(height) {
+  let left = new Array(height.length);
+  let right = new Array(height.length);
+  let maxLeft = height[0],
+    maxRight = height[height.length - 1];
+  left[0] = maxLeft;
+  right[height.length - 1] = maxRight;
+
+  for (let i = 1; i < height.length; i++) {
+    maxLeft = Math.max(maxLeft, height[i]);
+    left[i] = maxLeft;
+  }
+  for (let i = height.length - 2; i >= 0; i--) {
+    maxRight = Math.max(maxRight, height[i]);
+    right[i] = maxRight;
+  }
+  let ans = 0;
+  for (let i = 0; i < height.length; i++) {
+    ans += Math.min(left[i], right[i]) - height[i];
+  }
+  return ans;
+}
+let height = [0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1];
+console.log("Trapped rainwater:", trap(height));
