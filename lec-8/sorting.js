@@ -37,7 +37,6 @@ function selectionSort(arr) {
 //insertion sort
 function insertionSort(arr) {
   let n = arr.length;
-  f;
   for (let i = 1; i < n; i++) {
     let key = arr[i];
     let j = i - 1;
